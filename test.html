@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>jQuery full house</title>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="jquery-full-house.js"></script>
+	</head>
+	
+	<style>
+		body
+		{
+			margin: 100px;
+		}
+		
+		.fill_with_text 
+		{
+			width: 530px;
+			height: 240px;
+			font-size: 1px;
+			text-align: center;
+			border: 1px solid #ccc;
+			margin: 10px;
+			overflow: hidden;
+		}
+	</style>
+	
+	<script>
+		// stupid ILLEGAL TOKEN ERROR
+		function initialize()
+		{
+			$(".fill_with_text").fill_with_text()
+		}
+		
+		$(initialize)
+	</script>
+	
+	<body>
+		<div class="fill_with_text">This</div>
+		
+		<div class="fill_with_text">Lorum ipsum dolor sit amet</div>
+		
+		<div class="fill_with_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>​
+	</body>
+</html>

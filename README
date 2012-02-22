@@ -1,0 +1,8 @@
+jQuery full house
+
+https://github.com/kuchumovn/jquery-full-house
+
+Automatically adjusts font size so that the text fills the container and there is no free room left.
+Works both with single line text and multi line text.
+
+Example: http://jsfiddle.net/nyutD/1/
