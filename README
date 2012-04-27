@@ -5,4 +5,6 @@ https://github.com/kuchumovn/jquery-full-house
 Automatically adjusts font size so that the text fills the container and there is no free room left.
 Works both with single line text and multi line text.
 
-Example: http://jsfiddle.net/qW5h2/1/
+Uses binary search algorithm to speed things up (you can specify the step if you want).
+
+Example: http://jsfiddle.net/qW5h2/23/
