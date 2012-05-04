@@ -11,27 +11,140 @@
 	<style>
 		body
 		{
+			text-align: center;
+			
 			margin: 100px;
 		}
 		
-		.fill_with_text 
+		h1
+		{
+			font-family: Times New Roman;
+			font-weight: normal;
+			font-size: 80px;
+		}
+		
+		.simplest .fill, .another .fill, .advanced .fill
+		{
+			display: inline-block;
+		}
+		
+		.another, .advanced
+		{
+			margin-top: 110px;
+		}
+		
+		.simplest .fill, .another .fill
 		{
 			width: 530px;
 			height: 240px;
-			text-align: center;
-			border: 1px solid #ccc;
-			margin: 10px;
-			overflow: hidden;
+			
+			border: 1px solid #3f3f3f;
+			background-color: #efefef;
 		}
 		
-		body > .fill_with_text:nth-child(1)
+		.another code
+		{
+			color: #a66c00;
+		}
+		
+		.advanced 
+		{
+			text-align: center;
+		}
+		
+		.advanced .centerer > div
+		{
+			display: table;
+			width: 530px;
+			height: 240px;
+			
+			margin: 80px;
+			
+			border-width: 1px;
+			border-style: solid;
+			border-color: #3f3f3f;
+	
+			color: white;
+			
+			background: #7db9e8; /* Old browsers */
+			background: -moz-radial-gradient(center, ellipse cover, #7db9e8 0%, #1e5799 100%); /* FF3.6+ */
+			background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7db9e8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+			background: -webkit-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* Opera 12+ */
+			background: -ms-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* IE10+ */
+			background: radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+			
+			box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+			
+			border-radius: 6px;
+		}
+		
+		.advanced .fill
+		{
+			padding-left: 30px;
+			padding-right: 30px;
+			
+			padding-top: 20px;
+			padding-bottom: 20px;
+			
+			width: 100%;
+			height: 100%;
+			
+			display: table-cell;
+			vertical-align: middle;
+		}
+		
+		.advanced .fill:nth-child(1)
 		{
 			font-size: 0px;
 		}
 		
-		body > .fill_with_text:nth-child(3)
+		.advanced .fill:nth-child(3)
 		{
-			font-size: 50px;
+			font-size: 100px;
+		}
+		
+		.advanced > span
+		{
+			position: relative;
+			top: -30px;
+			font-size: 40px;
+			font-style: italic;
+			display: block;
+			margin-bottom: 0px;
+		}
+		
+		.advanced > span code
+		{
+			font-style: normal;
+			font-size: 26px;
+		}
+		
+		.advanced .centerer
+		{
+			display: inline-block;
+		}
+		
+		.simplest > label
+		{
+			font-size: 46px;
+			display: block;
+			font-style: italic;
+			margin-top: 40px;
+		}
+		
+		.simplest > pre
+		{
+			font-size: 32px;
+			display: inline-block;
+			text-align: left;
+			color: #7e5200;
+		}
+		
+		.simplest .fill
+		{
+			margin-top: 40px;
 		}
 	</style>
 	
@@ -39,17 +152,112 @@
 		// fixes stupid ILLEGAL TOKEN ERROR
 		function initialize()
 		{
-			$(".fill_with_text").fill_with_text() // also you can try { Font_size_increment_step: xxx } for binary search
+			$(".simplest .fill, .another .fill").fill_with_text()
+		
+			var to_be_filled = $(".advanced .fill")
+			
+			to_be_filled.eq(0).fill_with_text({ Font_size_increment_step: 10 }) // also you can try {  } for binary search
+			to_be_filled.eq(1).fill_with_text()
+			to_be_filled.eq(2).fill_with_text({ algorythm: 'Binary' }) // default algorythm, but not so easy to understand
+			to_be_filled.eq(3).fill_with_text({ algorythm: 'Linear' }) // slow algorythm, but basic for understanding
 		}
 		
 		$(initialize)
 	</script>
 	
 	<body>
-		<div class="fill_with_text">This</div>
+		<div class="simplest">
+			<h1>The simplest example</h1>
+			
+			<label>HTML</label>
+			<pre>
+&lt;div class="fill"&gt;
+	Just create a div with some text, 
+	set its width and height, 
+	and call $('your query here').fill_with_text()
+&lt;/div&gt;
+			</pre>
+			
+			<label>CSS</label>
+			<pre>
+.fill
+{
+	width: 530px;
+	height: 240px;
+}
+			</pre>
+			
+			<label>jQuery</label>
+			<pre>
+$('.fill').fill_with_text()
+			</pre>
+			
+			<label>And here's how it looks on the screen</label>
+			
+			<div class="fill">
+				Just create a div with some text, set its width and height, and call $('your query here').fill_with_text()
+			</div>
+		</div>
 		
-		<div class="fill_with_text">Lorum ipsum dolor sit amet</div>
+		<div class="another">
+			<h1>Non-text content example</h1>
+			
+			<div class="fill">
+				<img style="margin-top: 10px" src="https://encrypted-tbn1.google.com/images?q=tbn:ANd9GcRpC69cKG38Fw8rbsM5Nu_gTLabJJlZkniyQVBGKdVauJlxPVNt" width="100" height="100"/>
+				<br/>
+				Just create a div with any HTML content, set its <code>width</code> and <code>height</code>, and call <code>$('your query here').fill_with_text()</code>
+			</div>
+		</div>
+	
+		<div class="advanced">
+			<h1>Advanced examples</h1>
+			<span>content is centered vertically here using CSS <code>(display: table-cell)</code></span>
 		
-		<div class="fill_with_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>​
+			<div class="centerer">
+				<div>
+					<div class="fill">
+						OMG
+					</div>
+				</div>
+				
+				<div>
+					<div class="fill">
+						The quick brown fox jumps over the lazy dog (pangram)
+					</div>
+				</div>
+				
+				<div>
+					<div class="fill">
+						The psilocybin molecule is indirectly responsible for the hallucinogenic properties of the Psilocybe genus. This compound, as well as all other indole alkaloids, are derived from the amino acid tryptophan, being the only amino acid with the indole-amine ring.
+					</div>
+				</div>
+				
+				<div>
+					<div class="fill">
+						Не мысля гордый свет забавить, 
+						Вниманье дружбы возлюбя, 
+						Хотел бы я тебе представить 
+						Залог достойнее тебя, 
+						Достойнее души прекрасной, 
+						Святой исполненной мечты, 
+						Поэзии живой и ясной, 
+						Высоких дум и простоты; 
+						Но так и быть - рукой пристрастной 
+						Прими собранье пестрых глав, 
+						Полусмешных, полупечальных, 
+						Простонародных, идеальных, 
+						Небрежный плод моих забав, 
+						Бессониц, легких вдохновений, 
+						Незрелых и увядших лет, 
+						Ума холодных наблюдений 
+						И сердца горестных замет.
+						"Мой дядя самых честных правил, 
+						Когда не в шутку занемог, 
+						Он уважать себя заставил 
+						И лучше выдумать не мог. 
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
