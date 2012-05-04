@@ -14,13 +14,19 @@
 {
 	var Algorythm = 
 	{
+		// you can write your own algorythm
 		Interface: function(options)
 		{
+			// called if the 'x' font size is too big, and the text with this font size doesn't fit the container
 			this.too_big = function(x) {}
-			this.fits = function(x) {}			
-			// this.retry function will be set automatically
+			
+			// called if the text with font size 'x' fits the container (e.g. font_size=0 fits any container)
+			this.fits = function(x) {}	
+			
+			// this.retry(x) function will be set automatically
 		},
 	
+		// just for reference
 		Linear: function(options)
 		{
 			var largest_fit = 0
@@ -40,6 +46,7 @@
 			}
 		},
 		
+		// the faster algorythm
 		Binary: function(options)
 		{
 			var largest_fit
@@ -100,7 +107,8 @@
 	
 	function find_max_font_size(container, options)
 	{
-		container.css({ fontSize: 0 })
+		var initial_font_size = get_initial_font_size(container)
+		container.css('fontSize', 0)
 			
 		var html = container.html()
 		var available_height = container.outerHeight()
@@ -144,7 +152,7 @@
 		options.algorythm = options.algorythm || 'Binary'
 		var algorythm = new Algorythm[options.algorythm](options)
 		
-		var font_size = recursive_search(algorythm, get_initial_font_size(container))
+		var font_size = recursive_search(algorythm, initial_font_size)
 		container.empty().html(html)
 		return font_size
 	}
@@ -157,15 +165,6 @@
 		{
 			var container = $(this)
 			container.css({ fontSize: find_max_font_size(container, options) + 'px' })
-			
-			// my vertical centering hack
-			/*
-			if (options['center vertically'])
-			{
-				var label = $('<span/>').text(container.text()).appendTo(container.empty())
-				label.css({ position: 'relative', top: parseInt((container.height() - label.height()) / 2) + 'px' })
-			}
-			*/
 		})
 	}
 })(jQuery)
