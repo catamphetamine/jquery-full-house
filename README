@@ -7,4 +7,4 @@ Works both with single line text and multi line text.
 
 Uses binary search algorithm to speed things up (you can specify the step if you want).
 
-Example: http://jsfiddle.net/qW5h2/31/
+Example: http://jsfiddle.net/qW5h2/32/

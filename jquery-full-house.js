@@ -111,12 +111,16 @@
 		container.css('fontSize', 0)
 			
 		var html = container.html()
-		var available_height = container.outerHeight()
-		var available_width = container.outerWidth()
 		
 		container.empty()
 		
+		var overflow = container.css('overflow')
+		container.css('overflow', 'hidden')
+		
 		var sandbox = $('<span/>').html(html).appendTo(container)
+		
+		var available_height = container[0].scrollHeight
+		var available_width = container[0].scrollWidth
 		
 		function try_font_size(font_size)
 		{
@@ -153,7 +157,10 @@
 		var algorythm = new Algorythm[options.algorythm](options)
 		
 		var font_size = recursive_search(algorythm, initial_font_size)
+
+		container.css('overflow', overflow)
 		container.empty().html(html)
+		
 		return font_size
 	}
 	
