@@ -166,7 +166,16 @@
 		// fixes stupid ILLEGAL TOKEN ERROR
 		function initialize()
 		{
-			$(".simplest .fill, .another .fill").fill_with_text()
+			$(".simplest .fill, .another .fill").each(function()
+			{
+				var element = $(this)
+				options = {}
+				
+				if (element.hasClass('collapse'))
+					options.collapse = true
+					
+				element.fill_with_text(options)
+			})
 		
 			var to_be_filled = $(".advanced .fill")
 			
@@ -210,6 +219,12 @@ $('.fill').fill_with_text()
 			
 			<div class="fill">
 				Just create a div with some text, set its width and height, and call $('your query here').fill_with_text()
+			</div>
+			
+			<label>And you can pass in the "collapse" flag to make the containing div collapse to the content's height</label>
+			
+			<div class="fill collapse">
+				Create a div with text, set width and height, call $('query').fill_with_text({ collapse: true })
 			</div>
 		</div>
 		

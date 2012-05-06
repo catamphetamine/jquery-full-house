@@ -172,6 +172,8 @@
 		{
 			var container = $(this)
 			container.css({ fontSize: find_max_font_size(container, options) + 'px' })
+			if (options.collapse)
+				container.css('height', 'auto')
 		})
 	}
 })(jQuery)
