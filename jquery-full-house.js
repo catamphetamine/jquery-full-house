@@ -148,6 +148,7 @@
 		{
 			var find_max_font_size_starting_with = function(font_size)
 			{
+				font_size = Math.ceil(font_size)
 				if (is_too_big(font_size))
 					return algorythm.too_big(font_size)
 				else
