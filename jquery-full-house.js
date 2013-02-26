@@ -127,23 +127,28 @@
 			container.css({ fontSize: font_size + 'px' })
 		}
 
+		function is_too_big(font_size)
+		{
+			font_size = Math.ceil(font_size)
+			if (font_size < 1)
+				font_size = 1
+
+			try_font_size(font_size)
+
+			var current_height = container[0].scrollHeight
+			var current_width = container[0].scrollWidth
+
+			var height_proportion = current_height / available_height
+			var width_proportion = current_width / available_width
+
+			return height_proportion > 1 || width_proportion > 1
+		}
+
 		function recursive_search(algorythm, start_with)
 		{
 			var find_max_font_size_starting_with = function(font_size)
 			{
-				font_size = Math.ceil(font_size)
-				if (font_size < 1)
-					font_size = 1
-
-				try_font_size(font_size)
-
-				var current_height = container[0].scrollHeight
-				var current_width = container[0].scrollWidth
-
-				var height_proportion = current_height / available_height
-				var width_proportion = current_width / available_width
-
-				if (height_proportion > 1 || width_proportion > 1)
+				if (is_too_big(font_size))
 					return algorythm.too_big(font_size)
 				else
 					return algorythm.fits(font_size)
@@ -156,15 +161,15 @@
 		options.algorythm = options.algorythm || 'Binary'
 		var algorythm = new Algorythm[options.algorythm](options)
 
+		if (options.max_font_size && !is_too_big(options.max_font_size))
+			return options.max_font_size
+		if (options.min_font_size && is_too_big(options.min_font_size))
+			return options.min_font_size
+
 		var font_size = recursive_search(algorythm, initial_font_size)
 
 		container.css('overflow', overflow)
 		container.empty().html(html)
-
-		if (options.max_font_size)
-			font_size = Math.min(font_size, options.max_font_size)
-		if (options.min_font_size)
-			font_size = Math.max(font_size, options.min_font_size)
 
 		return font_size
 	}
