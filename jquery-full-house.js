@@ -163,6 +163,7 @@
 
 		if (options.max_font_size)
 			font_size = Math.min(font_size, options.max_font_size)
+			
 		if (options.min_font_size)
 			font_size = Math.max(font_size, options.min_font_size)
 
