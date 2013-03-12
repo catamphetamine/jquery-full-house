@@ -119,8 +119,8 @@
 
 		var sandbox = $('<span/>').html(html).appendTo(container)
 
-		var available_height = container[0].scrollHeight
-		var available_width = container[0].scrollWidth
+		var available_height = container.outerHeight()
+		var available_width = container.outerWidth()
 
 		function try_font_size(font_size)
 		{
