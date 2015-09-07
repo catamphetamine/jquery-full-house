@@ -1,0 +1,28 @@
+{
+  "name": "jquery-full-house",
+  "version": "1.0.0",
+  "description": "Automatically adjusts font size so that the text fills the container and there is no free room left.",
+  "main": "jquery-full-house.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halt-hammerzeit/jquery-full-house.git"
+  },
+  "keywords": [
+    "jquery",
+    "full",
+    "house",
+    "fit",
+    "text",
+    "dynamic",
+    "size"
+  ],
+  "author": "Nikolay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/halt-hammerzeit/jquery-full-house/issues"
+  },
+  "homepage": "https://github.com/halt-hammerzeit/jquery-full-house#readme"
+}
